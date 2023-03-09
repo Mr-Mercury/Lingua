@@ -17,14 +17,18 @@ function bar (props) {
     //     state.input = event.target.msg.value;
     //     console.log(state.input);
     // }
-    
+    // SOMEHOW PREVENTDEFAULT WORKED WE DONT KNOW WHY BUT IT DOES
     return (
     <div>
         <form>
             <p>{input}</p>
             <p>{curMode}</p>
             <input type='text' id = 'query' placeholder = 'Type Here!' onChange={(e) => dispatch(updateInput(e.target.value))} />
-            <button type='submit' className='sentence' onClick={() => dispatch(sendMessage(input))}>Submit</button>
+            <button type='submit' id='sentence' onClick={(e) => {
+                e.preventDefault();
+                dispatch(sendMessage());
+                let stuff = document.getElementById('query');
+                stuff.value = ''}}>Submit</button>
         </form>
     </div>
     )

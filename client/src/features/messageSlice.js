@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-
 /* MODE INFORMATION */
 
 const correction = "Pretend to be an English expert.  Each time I write a sentence, return it to me edited to have better grammar without any comments.";
@@ -12,9 +11,9 @@ const teacher = "Correct my grammar as if you're an English teacher, explaining 
 /* STATE */ 
 
 const initialState = {
-    curMsg: correction,
+    curMsg: 'correction',
     isLoading: true,
-    mode: correction,
+    mode: "Pretend to be an English expert.  Each time I write a sentence, return it to me edited to have better grammar without any comments.",
     input: 'Help me',
     curMode: 'correction',
 };
@@ -26,35 +25,44 @@ const messageSlice = createSlice({
         updateInput: (state, action) => {
             state.input = action.payload;
         },
-        sendMessage: (state, action) => {
-            const info = {mode: state.mode, prompt: action.payload};
-
-            fetch('/api/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(info),
-            })
-        },
         updateMessage: (state, action) => {
-            
+          state.curMsg = action.payload; 
         },
         updateButton: (state, action) => {
             if (action.payload === 1) {
-                state.mode = correction;
+                state.mode = "Pretend to be an English expert.  Each time I write a sentence, return it to me edited to have better grammar without any comments.";
                 state.curMode = 'Correction!';
             }
             if (action.payload === 2) {
-                state.mode = example;
-                state.curMode = 'Example!';
+                state.mode = "Give me an example of a sentence with the following word";
+                state.curMode = "Example!"
             }
             if (action.payload === 3) {
-                state.mode = teacher;
-                state.curMode = 'Teacher!';
+                state.mode = "Correct my grammar as if you're an English teacher, explaining what was wrong with my grammar.";
+                state.curMode = "Teacher!";
             }
         }
     }
 });
-export const { updateInput, updateButton, sendMessage, updateMessage } = messageSlice.actions;
 
+// THUNK GOES HERE 
+export const sendMessage = () => {
+
+    return async (dispatch, getState) => {
+    // get state info
+    const info = {mode: getState().message.mode, prompt: getState().message.input};
+        // const resopnse
+    const response = await fetch('/api/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(info)});
+    console.log('hello');
+    console.log(response);
+    dispatch(updateMessage(await response.json()))
+}}
+
+export const { updateInput, updateButton, updateMessage } = messageSlice.actions;
+
+export default messageSlice.reducer;

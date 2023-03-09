@@ -1,5 +1,7 @@
 import { Configuration, OpenAIApi } from 'openai';
 import { createRequire } from 'module';
+import pkg from 'react'; 
+const { React } = pkg;
 
 const require = createRequire(import.meta.url);
 
@@ -46,7 +48,7 @@ app.post('/api', async (req, res) => {
     try {
         const newMsg = await sendPrompt(mode, prompt); 
         console.log(newMsg);
-        return res.status(200).send(newMsg)
+        return res.status(200).json(newMsg)
     } catch (err) {console.log(err)};
 })
 
