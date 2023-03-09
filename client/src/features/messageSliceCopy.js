@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-
 /* MODE INFORMATION */
 
 const correction = "Pretend to be an English expert.  Each time I write a sentence, return it to me edited to have better grammar without any comments.";
@@ -58,3 +57,4 @@ const messageSlice = createSlice({
 });
 export const { updateInput, updateButton, sendMessage, updateMessage } = messageSlice.actions;
 
+export default messageSlice.reducer;
