@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300;1,400&display=swap');
+
+
+/* COLOR SECTION */
+
+html {
+    font-family: Roboto;
+    color:whitesmoke;
+}
+
+body {
+    background-image: url("https://c4.wallpaperflare.com/wallpaper/575/777/146/hal-9000-wallpaper-preview.jpg");
+    background-size: cover;
+}
+#header {
+    text-align: center;
+    background-color: gray;
+    margin-bottom:0;
+}
+
+#query {
+    background-color: gray;
+    opacity: .9;
+}
+
+.chatbox {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+#result {
+    font-size: 18px;
+}
+
+.mode {
+    background-color: lightcyan;
+}
+
+
+
+body {
+    background-image: url("https://images5.alphacoders.com/656/656468.jpg");
+    background-size: cover;
+}

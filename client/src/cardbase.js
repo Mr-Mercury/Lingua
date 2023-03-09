@@ -1,0 +1,1 @@
+[{word: 'Shinga', pos: 'Verb', def: 'Binga'}]
