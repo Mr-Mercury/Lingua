@@ -11,11 +11,11 @@ const teacher = "Correct my grammar as if you're an English teacher, explaining 
 /* STATE */ 
 
 const initialState = {
-    curMsg: 'correction',
+    curMsg: '',
     isLoading: true,
     mode: "Pretend to be an English expert.  Each time I write a sentence, return it to me edited to have better grammar without any comments.",
     input: 'Help me',
-    curMode: 'correction',
+    curMode: 'Correcting you, Dave',
 };
 
 const messageSlice = createSlice({
@@ -31,15 +31,19 @@ const messageSlice = createSlice({
         updateButton: (state, action) => {
             if (action.payload === 1) {
                 state.mode = "Pretend to be an English expert.  Each time I write a sentence, return it to me edited to have better grammar without any comments.";
-                state.curMode = 'Correction!';
+                state.curMode = 'Correcting you, Dave';
             }
             if (action.payload === 2) {
                 state.mode = "Give me an example of a sentence with the following word";
-                state.curMode = "Example!"
+                state.curMode = "Giving you examples, Dave"
             }
             if (action.payload === 3) {
-                state.mode = "Correct my grammar as if you're an English teacher, explaining what was wrong with my grammar.";
-                state.curMode = "Teacher!";
+                state.mode = "Correct my grammar as if you're an English teacher, explaining what was wrong with my grammar. Do it while acting like an angry robot";
+                state.curMode = "Teaching you, Dave";
+            }
+            if (action.payload === 4) {
+                state.mode = "Have a conversation with me as if you're Hal 9000 from 2001: A Space Odyssey";
+                state.curMode = "I can't do that, Dave"
             }
         }
     }
@@ -58,7 +62,6 @@ export const sendMessage = () => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(info)});
-    console.log('hello');
     console.log(response);
     dispatch(updateMessage(await response.json()))
 }}

@@ -12,15 +12,33 @@ body {
     background-image: url("https://c4.wallpaperflare.com/wallpaper/575/777/146/hal-9000-wallpaper-preview.jpg");
     background-size: cover;
 }
+
 #header {
     text-align: center;
     background-color: gray;
     margin-bottom:0;
+    border:1px outset whitesmoke;
 }
 
 #query {
-    background-color: gray;
+    background-color: whitesmoke;
+    color: black;
     opacity: .9;
+    width: 500px;
+    height: 30px;
+    border-radius:12px;
+    text-align:center;
+}
+.card {
+    background-color: gray;
+    color: whitesmoke;
+}
+
+.left {
+    display:flex;
+    flex-direction:column;
+    justify-content:right;
+    align-items:flex-end;
 }
 
 .chatbox {
@@ -30,13 +48,26 @@ body {
 }
 
 #result {
-    font-size: 18px;
+    font-size: 1.4rem;
+    background: rgba(209, 209, 209, 0.2);
+    width:80%;
+    text-align:center;
+    border-radius:25px;
+    padding:10px;
+    border:1px outset whitesmoke;
 }
 
 .mode {
-    background-color: lightcyan;
+    background-color: whitesmoke;
 }
-
+#sentence {
+    background-color:whitesmoke;
+    height:30px;
+    border-radius:5px;
+}
+#hal {
+    background-color:crimson
+}
 
 
 body {

@@ -21,7 +21,6 @@ function bar (props) {
     return (
     <div>
         <form>
-            <p>{input}</p>
             <p>{curMode}</p>
             <input type='text' id = 'query' placeholder = 'Type Here!' onChange={(e) => dispatch(updateInput(e.target.value))} />
             <button type='submit' id='sentence' onClick={(e) => {
